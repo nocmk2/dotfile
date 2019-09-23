@@ -15,7 +15,7 @@ au BufRead *.html set filetype=htmlm4
 vnoremap <silent> # :s/^/#/<cr>:noh<cr>
 vnoremap <silent> -# :s/^#//<cr>:noh<cr>
 
-nnoremap <leader>hi :echo 'hi mk!'<cr>
+nnoremap <leader>hi :echo 'hi mk!'<cr> 
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>note :vsp ~/Downloads/CODE/note.md<cr>
@@ -77,6 +77,7 @@ call plug#begin('~/.vim/plugged')
 
 " auto comp
 Plug 'ncm2/ncm2'
+
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-tmux'
@@ -107,14 +108,19 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'ambv/black'
 
 " for golang
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'w0rp/ale'
 Plug 'sebdah/vim-delve'
+Plug 'buoto/gotests-vim'
+Plug 'SirVer/ultisnips'
+Plug 'Shougo/echodoc.vim'
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 call plug#end()
 
@@ -139,7 +145,7 @@ set cindent "C语言风格缩进"
 set autoindent "自动缩进"
 
 set background=light
-colorscheme PaperColor 
+" colorscheme PaperColor 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 ":set termguicolors
 let g:airline_powerline_fonts = 1
@@ -154,6 +160,19 @@ let s:maxoff = 50 " maximum number of lines to look backwards.
 let pyindent_nested_paren="&sw*2"
 let pyindent_open_paren="&sw*2"
 
+" run :GoBuild or :GoTestCompile based on the go file
+" 根据文件名判断是测试文件还是go文件运行编译命令
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 " go hightlight in vim-go
 let g:go_search_bin_path_first = 1
 let g:go_highlight_build_constraints = 1
@@ -165,4 +184,18 @@ let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
+let g:go_highlight_function_calls = 1
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = "5s"
+" let g:go_auto_type_info = 1
+"
 
+" Shougo/echodoc.vim
+" Or, you could use neovim's virtual virtual text feature.
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'virtual'
+
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
