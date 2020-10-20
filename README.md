@@ -53,3 +53,14 @@ iterm2
 ----
 Preferences-> Profiles -> Text -> Non-ASCII Font -> Go Mono for Powerline
 
+
+zsh
+----
+git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+Set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc.
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+inside ~/.zshrc
+plugins=(zsh-autosuggestions)
+
