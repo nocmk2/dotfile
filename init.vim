@@ -76,19 +76,19 @@ augroup END
 call plug#begin('~/.vim/plugged')
 
 " auto comp
-Plug 'ncm2/ncm2'
+" Plug 'ncm2/ncm2'
 
 Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-github'
-Plug 'ncm2/ncm2-racer'
-Plug 'ncm2/ncm2-pyclang'
-Plug 'ncm2/ncm2-vim'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'ncm2/ncm2-ultisnips'
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-tmux'
+"Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-jedi'
+"Plug 'ncm2/ncm2-github'
+"Plug 'ncm2/ncm2-racer'
+"Plug 'ncm2/ncm2-pyclang'
+"Plug 'ncm2/ncm2-vim'
+"Plug 'roxma/vim-hug-neovim-rpc'
+"Plug 'ncm2/ncm2-ultisnips'
 Plug 'maralla/completor.vim'
 Plug 'maralla/completor-neosnippet'
 Plug 'lifepillar/vim-mucomplete'
@@ -108,9 +108,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Plug 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/papercolor-theme'
 
+" python  
 Plug 'ambv/black'
+
 
 " for golang
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
