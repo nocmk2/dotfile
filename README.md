@@ -39,3 +39,17 @@ git clone https://github.com/nocmk2/dotfile.git ~/.config/nvim
 cd ~/.config/nvim
 ln -s ~/.config/nvim ~/.vim
 ```
+
+font
+-----
+
+```
+git clone https://github.com/powerline/fonts.git
+cd fonts
+./install
+```
+
+iterm2
+----
+Preferences-> Profiles -> Text -> Non-ASCII Font -> Go Mono for Powerline
+
