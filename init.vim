@@ -147,7 +147,7 @@ set cindent "C语言风格缩进"
 set autoindent "自动缩进"
 
 set background=light
-" colorscheme PaperColor 
+colorscheme PaperColor 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 ":set termguicolors
 let g:airline_powerline_fonts = 1
