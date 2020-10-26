@@ -64,3 +64,41 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 inside ~/.zshrc
 plugins=(zsh-autosuggestions)
 
+ctags
+----
+# Some MacOS comes with ctags 
+$ /usr/bin/ctags
+usage: ctags [-BFadtuwvx] [-f tagsfile] file ...
+    
+# Don't use that default ctags. Install Exuberant Ctags from homebrew
+$ brew install ctags
+$ alias ctags="`brew --prefix`/bin/ctags"
+$ alias ctags >> ~/.bash_profile
+$ alias ctags >> ~/.zshrc
+    
+$ which ctags
+/usr/local/bin/ctags
+
+nvim ~/.ctags
+--recurse=yes
+--exclude=.git
+--exclude=BUILD
+--exclude=.svn
+--exclude=*.js
+--exclude=vendor/*
+--exclude=node_modules/*
+--exclude=db/*
+--exclude=log/*
+--exclude=\*.min.\*
+--exclude=\*.swp
+--exclude=\*.bak
+--exclude=\*.pyc
+--exclude=\*.class
+--exclude=\*.sln
+--exclude=\*.csproj
+--exclude=\*.csproj.user
+--exclude=\*.cache
+--exclude=\*.dll
+--exclude=\*.pdb
+
+

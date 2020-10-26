@@ -29,7 +29,6 @@ nnoremap <leader><C-g> :GoRu<CR>
 " 在第一列插入顺序数字
 vnoremap <leader><C-n> :let i=1 \| '<,'>g/^/ s//\=i/ \| let i+=1
 
-
 "关闭其他splitwindow nnoremap <C-o> :only<CR>   <C-w>o 
 
 nnoremap <M-h> <c-w>h nnoremap <M-j> <c-w>j
@@ -91,6 +90,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'maralla/completor.vim'
 "Plug 'maralla/completor-neosnippet'
 "Plug 'lifepillar/vim-mucomplete'
+Plug 'axiaoxin/vim-json-line-format'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " vim-unimpaired
@@ -123,6 +123,14 @@ Plug 'buoto/gotests-vim'
 Plug 'SirVer/ultisnips'
 Plug 'Shougo/echodoc.vim'
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+
+" for databas e
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
+
+" for markdown need Typora installed
+Plug 'wookayin/vim-typora'
 
 call plug#end()
 
@@ -262,7 +270,18 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gd <Plug>(coc-definition)
+function! s:GoToDefinition()
+  if CocAction('jumpDefinition')
+    return v:true
+  endif
+
+  let ret = execute("silent! normal \<C-]>")
+  if ret =~ "Error" || ret =~ "错误"
+    call searchdecl(expand('<cword>'))
+  endif
+endfunction
+nmap <silent> gd :call <SID>GoToDefinition()<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -362,6 +381,4 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-
 
