@@ -15,7 +15,7 @@ au BufRead *.html set filetype=htmlm4
 vnoremap <silent> # :s/^/#/<cr>:noh<cr>
 vnoremap <silent> -# :s/^#//<cr>:noh<cr>
 
-nnoremap <leader>hi :echo 'hi mk!'<cr> 
+nnoremap <leader>hi :echo 'hi mk!eee'<cr> 
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>note :vsp ~/Downloads/CODE/note.md<cr>
@@ -25,6 +25,9 @@ nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 nnoremap <C-p> :<C-u>FZF<CR>
 nnoremap <leader><C-i> : IpythonRun<CR>
 nnoremap <leader><C-g> :GoRu<CR>
+
+" Rg searching in file 
+nnoremap <leader>ff :Rg<CR>
 
 " 在第一列插入顺序数字
 vnoremap <leader><C-n> :let i=1 \| '<,'>g/^/ s//\=i/ \| let i+=1
@@ -96,10 +99,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " vim-unimpaired
 Plug 'tpope/vim-unimpaired'
 
-" search
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-
 " git 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -131,6 +130,13 @@ Plug 'kristijanhusak/vim-dadbod-completion'
 
 " for markdown need Typora installed
 Plug 'wookayin/vim-typora'
+
+
+" fzf ag for Searching file
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', {'do': {-> fzf#install() }}
+
+
 
 call plug#end()
 
@@ -285,6 +291,10 @@ nmap <silent> gd :call <SID>GoToDefinition()<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+
+
+
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
