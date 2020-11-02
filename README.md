@@ -117,12 +117,16 @@ brew  install fzf
 brew install ripgrep
 ```
 
-.zshrc
+#### add to .zshrc
 ``` shell
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
   export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 ```
+
+### redis mysql
+alias redis-start='redis-server /usr/local/etc/redis.conf'
+alias mysql-start='mysql.server start'
 
 
