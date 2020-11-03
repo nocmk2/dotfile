@@ -129,4 +129,8 @@ fi
 alias redis-start='redis-server /usr/local/etc/redis.conf'
 alias mysql-start='mysql.server start'
 
+### Database client
+https://github.com/kristijanhusak/vim-dadbod-ui
+
+
 
