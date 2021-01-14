@@ -132,5 +132,22 @@ alias mysql-start='mysql.server start'
 ### Database client
 https://github.com/kristijanhusak/vim-dadbod-ui
 
+### Vimium
+> gi jump to search input
+> F open link in new tab
+> b open bookmark
+> T Search throug your open tabs
+> H Go back
+> L Go forward
+> t create a new tab
+> J one tab left
+> K one tab right
+> ^ previous tab
+> ? help
+
+### Karabiner-Elements
+> Preferences -> Simple modifications -> (caps_lock->left_control)
+> Preferences -> Complex modifications -> Change right_command_hjkl to arrow keys
+
 
 

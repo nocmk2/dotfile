@@ -8,6 +8,7 @@ set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→,eol:¬
 set list!
 set relativenumber
 set number
+set nowrap
 nnoremap <leader>l :set list!<cr>
 
 au BufRead *.html set filetype=htmlm4
